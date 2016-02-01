@@ -5,6 +5,7 @@ const basemap = require('./basemap.js');
 const mapManager = require('./mapManager.js');
 const attribute = require('./attribute.js');
 const events = require('./events.js');
+const printTask = require('./printTask.js');
 
 function initAll(esriBundle) {
     let debug = false;
@@ -16,6 +17,7 @@ function initAll(esriBundle) {
     api.mapManager = mapManager(esriBundle);
     api.attribs = attribute(esriBundle);
     api.events = events();
+    api.printTask = printTask(esriBundle);
     api.debug = function () {
         if (arguments.length === 1) {
             debug = arguments[0] === true;
@@ -32,7 +34,6 @@ function initAll(esriBundle) {
 }
 
 module.exports = function (esriLoaderUrl, window) {
-
     // esriDeps is an array pairing ESRI JSAPI dependencies with their imported names
     // in esriBundle
     const esriDeps = [
@@ -53,6 +54,9 @@ module.exports = function (esriLoaderUrl, window) {
         ['esri/request', 'esriRequest'],
         ['esri/SpatialReference', 'SpatialReference'],
         ['esri/tasks/GeometryService', 'GeometryService'],
+        ['esri/tasks/PrintParameters', 'PrintParameters'],
+        ['esri/tasks/PrintTemplate', 'PrintTemplate'],
+        ['esri/tasks/PrintTask', 'PrintTask'],
         ['esri/tasks/ProjectParameters', 'ProjectParameters']
     ];
 
