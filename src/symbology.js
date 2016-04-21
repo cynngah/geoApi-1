@@ -12,6 +12,8 @@
 function createSymbologyConfig(renderer, legend) {
     // getting renderer class type from prototype object and get rid of unnecessary prefixes with split
     const symbArr = Object.getPrototypeOf(renderer).declaredClass.split('\.');
+
+    // TODO: Change the way you get declared class; seems like it'd be easy to break if they change stuff;
     const symbType = symbArr[2];
     const symb = {
         type: symbType
